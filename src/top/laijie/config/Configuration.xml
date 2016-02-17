@@ -44,9 +44,7 @@
       </dataSource>
     </environment>
   </environments>
-<!-- 
   <mappers>
-    <mapper resource="org/apache/ibatis/submitted/complex_property/User.xml"/>
+    <mapper resource="top/laijie/config/sqlxml/Message.xml"/>
   </mappers>
- -->
 </configuration>
