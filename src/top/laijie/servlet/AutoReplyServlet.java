@@ -1,6 +1,7 @@
 package top.laijie.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,7 +26,7 @@ import top.laijie.server.MessageServer;
  *
  */
 @SuppressWarnings("serial")
-public class ListServlet extends HttpServlet{
+public class AutoReplyServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp){
@@ -45,15 +46,14 @@ public class ListServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		String command = req.getParameter("command");
-		String description = req.getParameter("description");
-		req.setAttribute("command", command);
-		req.setAttribute("description", description);
+		resp.setCharacterEncoding("UTF-8");
+		String content = req.getParameter("content");
 		MessageServer server = new MessageServer();
 		//List<Message> messageList = server.queryMessageList(command, description);
-		List<Command> commandList = server.queryCommandList(command, description);
-		//req.setAttribute("messageList", messageList);
-		req.setAttribute("messageList", commandList);
-		req.getRequestDispatcher("/WEB-INF/jsp/back/list.jsp").forward(req, resp);
+		String command = server.queryByCommand(content);
+		PrintWriter out = resp.getWriter();
+		out.write(command);
+		out.flush();
+		out.close();
 	}
 }

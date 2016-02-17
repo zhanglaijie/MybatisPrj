@@ -21,20 +21,22 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Message">
+<mapper namespace="Command">
 
-  <resultMap type="top.laijie.bean.Message" id="MessageResult">
-    <id column="id" jdbcType="INTEGER" property="id"/>
-    <result column="command" jdbcType="VARCHAR" property="command"/>
+  <resultMap type="top.laijie.bean.Command" id="CommandResult">
+    <id column="c_id" jdbcType="INTEGER" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
     <result column="description" jdbcType="VARCHAR" property="description"/>
-    <result column="content" jdbcType="VARCHAR" property="content"/>
+    <collection property="contentList" resultMap="CommandContent.ContentResult"/>
   </resultMap>
 
-  <select id="queryMessageList" parameterType="top.laijie.bean.Message" resultMap="MessageResult">
-    select id,command,description,content from message
+  <select id="queryCommandList" parameterType="top.laijie.bean.Command" resultMap="CommandResult">
+    select a.id c_id,a.name,description,b.id,content,b.command_id 
+    from command a left join command_content b 
+    on b.command_id= a.id
     <where>
-    	<if test="command!=null and !&quot;&quot;.equals(command.trim())">
-    	and command = #{command}
+	    <if test="name!=null and !&quot;&quot;.equals(name.trim())">
+	    	and a.name = #{name}
 	    </if>
 	    <if test="description!=null and !&quot;&quot;.equals(description.trim())">
 	    	and description like '%' #{description} '%'

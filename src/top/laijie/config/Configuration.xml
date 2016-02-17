@@ -46,5 +46,7 @@
   </environments>
   <mappers>
     <mapper resource="top/laijie/config/sqlxml/Message.xml"/>
+    <mapper resource="top/laijie/config/sqlxml/Command.xml"/>
+    <mapper resource="top/laijie/config/sqlxml/CommandContent.xml"/>
   </mappers>
 </configuration>

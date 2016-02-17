@@ -11,8 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta http-equiv="X-UA-Compatible"content="IE=9; IE=8; IE=7; IE=EDGE" />
 		<title>内容列表页面</title>
 		<link href="<%=basePath%>/resources/css/all.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="<%=basePath%>/resources/js/jquery-1.8.0.min.js"></script>
-		<script type="text/javascript" src="<%=basePath%>/resources/js/messagelist.js"></script>
+		<script type="text/javascript" src="<%=basePath%>/resources/js/common/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="<%=basePath%>/resources/js/back/messagelist.js"></script>
 	</head>
 	<body style="background: #e1e9eb;">
 		<form action="<%=basePath%>List.action" id="mainForm" method="post">
@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<input type="hidden" name="id" value='${message.id}'/>
 									</td>
 									<td>${status.index+1}</td>
-									<td>${message.command}</td>
+									<td>${message.name}</td>
 									<td>${message.description}</td>
 									<td>
 										<a href="#">修改</a>&nbsp;&nbsp;&nbsp;

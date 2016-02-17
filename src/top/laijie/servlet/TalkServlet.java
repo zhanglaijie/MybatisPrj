@@ -14,18 +14,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import top.laijie.bean.Command;
 import top.laijie.bean.Message;
 import top.laijie.server.MessageServer;
 
 
 /**
  * 列表页面初始化控制
- * @author laijie
+ * @author laiji
  *
  */
 @SuppressWarnings("serial")
-public class ListServlet extends HttpServlet{
+public class TalkServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp){
@@ -50,10 +49,8 @@ public class ListServlet extends HttpServlet{
 		req.setAttribute("command", command);
 		req.setAttribute("description", description);
 		MessageServer server = new MessageServer();
-		//List<Message> messageList = server.queryMessageList(command, description);
-		List<Command> commandList = server.queryCommandList(command, description);
-		//req.setAttribute("messageList", messageList);
-		req.setAttribute("messageList", commandList);
-		req.getRequestDispatcher("/WEB-INF/jsp/back/list.jsp").forward(req, resp);
+		List<Message> messageList = server.queryMessageList(command, description);
+		req.setAttribute("messageList", messageList);
+		req.getRequestDispatcher("/WEB-INF/jsp/front/talk.jsp").forward(req, resp);
 	}
 }

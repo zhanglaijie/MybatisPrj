@@ -34,4 +34,23 @@
   	<servlet-name>DeleteBatchServlet</servlet-name>
   	<url-pattern>/DeleteBatch.action</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>TalkServlet</servlet-name>
+  	<servlet-class>top.laijie.servlet.TalkServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TalkServlet</servlet-name>
+  	<url-pattern>/Talk.action</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AutoReplyServlet</servlet-name>
+  	<servlet-class>top.laijie.servlet.AutoReplyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AutoReplyServlet</servlet-name>
+  	<url-pattern>/AutoReplyServlet.action</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
